@@ -1,19 +1,21 @@
 import React from "react";
-
-const db = async () => {
-  const response = await fetch("http://localhost:8080/api/color/api_key", {
-    method: "get",
-    headers: { "Content-Type": "application/json" },
-  });
-  const result = await response.json();
-  console.log(result);
-};
-db();
-
+import Index from "./Page/Index";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Login from "./Page/Login";
+import Color from "./Page/Color";
+import Sign from "./Page/Sign";
+import Profile from "./Page/Profile";
 const App = () => {
   return (
     <>
-      <h1>welcome to vscode</h1>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign" element={<Sign />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/color" element={<Color />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </>
   );
 };
