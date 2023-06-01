@@ -150,10 +150,22 @@ nav .menu li:hover a {
   border: 1px solid #9d00ab;
   color: #ffff;
   transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #formContainer .formContent button:hover {
   background-color: transparent;
   border: 1px solid #9d00ab;
+  color: #9d00ab;
+}
+
+.google-icon {
+  color: white;
+}
+
+#formContainer .formContent button:hover .google-icon {
+  background-color: transparent;
   color: #9d00ab;
 }
 

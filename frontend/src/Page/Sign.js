@@ -4,8 +4,13 @@ import Header from "../Components/Header";
 import ColorContext from "../context/ColorContext";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { IoLogoGoogle } from "react-icons/io5";
+
+
 const Sign = () => {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
+
+  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
+    useAuth0();
   console.log(isAuthenticated);
   if (localStorage.getItem("auth-token")) {
     window.location.href = "/";
@@ -69,24 +74,21 @@ const Sign = () => {
             value={form.confirmpassword}
             placeholder="Confirm Password"
           />
+
           <button type="submit">Register</button>
+          <br />
           <div className="info">
             <Link exact to="/login">
               already account? Login
             </Link>
           </div>
+          <br />
+          {!isAuthenticated && (
+            <button type="button" onClick={() => loginWithRedirect()}>
+             <IoLogoGoogle  className="google-icon"/>&nbsp;&nbsp; Login with Google Account
+            </button>
+          )}
         </form>
-        {!isAuthenticated ? (
-          <button onClick={() => loginWithRedirect()}>Log In</button>
-        ) : (
-          <button
-            onClick={() =>
-              logout({ logoutParams: { returnTo: window.location.origin } })
-            }
-          >
-            Log Out
-          </button>
-        )}
       </div>
     </>
   );
